@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AiNuggets</title>
+
+    <style>
+        .head {
+            display: grid;
+            grid-template-columns: 6fr 1fr;
+            background-color: #f16744;
+
+        }
+
+
+
+        .header {
+            padding: 1px;
+            text-align: center;
+            background: #f16744;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 40px;
+        }
+
+
+
+        .discrip {
+            background-color: rgb(255, 128, 105);
+            padding-top: 1pt;
+            padding-bottom: 1pt;
+        }
+
+        .box {
+            display: grid;
+            /* grid-template-rows: 1fr 1fr 1fr; */
+        }
+
+        /* .box>div {
+            background: #eee;
+
+        }
+
+        .box>div:nth-child(odd) {
+
+            background: #ddd;
+        } */
+
+
+        .ch1 {
+            /* align-self: center; */
+            padding: 3em;
+        }
+
+
+
+
+
+        .errors {
+            color: red;
+            padding-bottom: 20em;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+
+
+
+
+
+        footer {
+            text-align: center;
+            padding: 1px;
+            background-color: rgb(255, 128, 105);
+            color: white;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>AiNuggets</h1>
+        <p>VVIT Attendence Report Generator</p>
+    </div>
+    <div class='head'>
+        <div></div>
+        <div class='feedback'>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSenhCypfXYS45S0zH9qrO6aOtDRkMXj2AxURfVKCmlv6aYGmw/viewform?usp=sf_link"
+                target="_blank">Feedback/complaints</a>
+        </div>
+    </div>
+
+
+    <div class='discrip'>
+        <center>
+            <p style="font-family: geneva">This project will modify the daily generated attendance reports of online
+                classes
+                into a standard format </p>
+        </center>
+    </div>
+
+
+    <form method=post enctype=multipart/form-data action='/'>
+        <center>
+            <div class='box'>
+                <div class='ch1'>
+                    <label for="opt">Choose an option:</label>
+                    <select name="opt" id="opt">
+                        <option value="null">select an option</option>
+                        <option value="vvit">VVIT</option>
+                        <option value="others">others</option>
+                    </select>
+                </div>
+                <div class=sub>
+                    <input type="submit" name="submit" value='submit'>
+                </div>
+                <div class='errors'>
+                    <p><b>{{ err_m }}</b></p>
+
+                </div>
+            </div>
+
+        </center>
+    </form>
+
+
+
+
+
+    <footer>
+        <p>Developed by Rakesh Koyya | Final Year ECE |<br>
+            <a href="https://vvitguntur.com" target="_blank">Vasireddy Venkatadri Institute of Technology</a>
+            | <a href="mailto:rakeshkoyya2024@gmail.com">rakeshkoyya2024@gmail.com</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

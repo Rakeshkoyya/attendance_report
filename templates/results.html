@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ainuggets-VVIT attendance generater</title>
+  <style>
+    .discrip {
+      background-color: rgb(255, 128, 105);
+      padding-top: 1pt;
+      padding-bottom: 1pt;
+    }
+
+
+    .succmesg {
+      padding-top: 2em;
+      color: green;
+    }
+
+    .notemesg {
+      padding: 1em;
+      color: red;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    /* Style the header */
+    .header {
+      padding: 1px;
+      text-align: center;
+      background: #f16744;
+      color: white;
+    }
+
+    /* Increase the font size of the h1 element */
+    .header h1 {
+      font-size: 40px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1px;
+      background-color: rgb(255, 128, 105);
+      color: white;
+    }
+
+    .content {
+      /* background: green; */
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-auto-rows: 80px;
+      justify-items: center;
+      align-items: center;
+
+
+    }
+
+    /* .content >div{
+        background: #eee;
+
+      }
+      .content > div:nth-child(odd) {
+
+        background: #ddd;
+      } */
+
+    .contab {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-auto-rows: 30px;
+      /* border: #333 1px solid; */
+      padding-left: 20em;
+      padding-right: 20em;
+      /* justify-items: center;
+        align-items: center; */
+
+    }
+
+    .contab>div {
+      background: #eee;
+
+    }
+
+    .contab>div:nth-child(odd) {
+
+      background: #ddd;
+    }
+
+
+
+    .dc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 100px;
+      grid-gap: 3em;
+      /* border: #333 1px solid; */
+      padding-bottom: 5em;
+    }
+
+    .dnld {
+      justify-self: right;
+    }
+
+    .clear {
+      justify-self: left;
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <div class='head'>
+    <div class="header">
+      <h1>AiNuggets</h1>
+      <p>VVIT Attendence Report Generator</p>
+    </div>
+    <div>
+
+
+    </div>
+  </div>
+  <div class='discrip'>
+    <center>
+      <p style="font-family: geneva">This project will modify the daily generated attendance reports of online classes
+        into a standard format </p>
+    </center>
+  </div>
+
+  <div class='succmesg'>
+    <center><b>{{ shape }}<br></b><br>
+    </center>
+  </div>
+  <!-- <p>the breif details</p>  -->
+  <div class='content'>
+    <div></div>
+    <div class='cont1'>
+      {{ year_ht }}<br>
+      {{ branch_ht}}<br>
+      {{ subject_ht }}
+    </div>
+    <div class='cont2'>
+      {{ today }}<br>
+      {{ class_dur }}
+    </div>
+    <div class='cont3'>
+      {{ present }}<br>
+      {{ absent }}
+    </div>
+    <div></div>
+  </div>
+
+  <center>
+    <b>
+      <p>{% if filtr!=0 %}
+        List do absentees with less than {{filtr}}% time duration
+        {% else %}
+      <div>list of absentees</div>
+      {% endif %}
+      </p>
+    </b>
+  </center>
+  <div class='contab' align='center'>
+    {% for i in list_absent %}
+    <div>
+      {{ i }}
+
+    </div>
+    {% endfor%}
+
+  </div>
+
+
+  <center><br>
+    <div class=notemesg>**please note if you find '-1' in your downloaded report,<br>it indicates the mismatched data
+      from your files. </div>
+  </center>
+
+
+
+
+  <div class='dc'>
+    <!-- <div></div> -->
+
+    <div class='dnld'>
+      <center>
+        <form method="POST" enctype=multipart/form-data action='/results'>
+          <p>Download csv file of result</p>
+          <input type=submit value=download>
+        </form>
+      </center>
+    </div>
+    <div class=clear>
+      <center>
+        <form method='POST' enctype=multipart/form-data action='/clear'>
+          <p>Click to clear the form</p>
+          <input type=submit value=clear>
+        </form>
+      </center>
+    </div>
+    <!-- <div></div> -->
+  </div>
+
+
+  <footer>
+    <p>Developed by Rakesh Koyya | final year ECE |<br>
+      <a href="https://vvitguntur.com" target="_blank">VVIT guntur</a>
+      | <a href="mailto:rakeshkoyya2024@gmail.com">rakeshkoyya2024@gmail.com</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AiNuggets</title>
+    <style>
+        .head {
+            display: grid;
+            grid-template-columns: 6fr 1fr;
+            background-color: #f16744;
+
+        }
+
+
+
+        .header {
+            padding: 1px;
+            text-align: center;
+            background: #f16744;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 40px;
+        }
+
+
+        .choose {
+            display: grid;
+            /* background-color: blue; */
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: 2em;
+            padding: 2em;
+            grid-gap: 2em;
+        }
+
+        /* .choose>div {
+            background: #eee;
+
+        }
+
+        .choose>div:nth-child(odd) {
+
+            background: #ddd;
+        } */
+
+        .ch1 {
+            /* background-color: blue; */
+            justify-self: right;
+
+        }
+
+        .ch3 {
+            /* background-color: greenyellow; */
+            justify-self: right;
+        }
+
+        .discrip {
+            background-color: rgb(255, 128, 105);
+            padding-top: 1pt;
+            padding-bottom: 1pt;
+        }
+
+        .sampfiles {
+            /* display: grid; */
+            /* background-color: lawngreen; */
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+
+
+        .filescsv {
+            display: grid;
+            grid-template-columns: 1fr, 1fr;
+            /* grid-auto-rows: 150px; */
+            grid-gap: 4em;
+        }
+
+        .sub {
+            /* grid-column: 1/5; */
+            padding-bottom: 2em;
+        }
+
+        /* .filescsv>div {
+            background: #eee;
+
+        }
+
+        .filescsv>div:nth-child(odd) {
+
+            background: #ddd;
+        } */
+
+        .errmesg {
+            color: red;
+        }
+
+        .errors {
+            padding-bottom: 4em;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+
+
+        footer {
+            text-align: center;
+            padding: 1px;
+            background-color: rgb(255, 128, 105);
+            color: white;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>AiNuggets</h1>
+        <p>VVIT Attendence Report Generator</p>
+    </div>
+    <div class='head'>
+        <div></div>
+        <div class='feedback'>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSenhCypfXYS45S0zH9qrO6aOtDRkMXj2AxURfVKCmlv6aYGmw/viewform?usp=sf_link"
+                target="_blank">Feedback/complaints</a>
+        </div>
+    </div>
+
+
+    <div class='discrip'>
+        <center>
+            <p style="font-family: geneva">This project will modify the daily generated attendance reports of online
+                classes
+                into a standard format </p>
+        </center>
+    </div>
+
+
+    <div class='sampfiles'>
+        <center>
+            <p>These are sample file that we expect as input and output<br>
+                <i>*only accessable to vvit logins</i><br>
+
+                <a href="https://vvitguntur-my.sharepoint.com/:x:/g/personal/ainuggets_vvit_net/EYrWeUnF9n5Nm_6Edq1n454BztkRFh7_LkxfbCH8ziYLKA?e=SrNIH1"
+                    target="_blank">File from MS teams</a> |
+                <!-- <a href=https://vvitguntur-my.sharepoint.com/:x:/g/personal/ainuggets_vvit_net/ERMPH422ECFLhAegewYIV20B-eUeEUg8BJEgzNjOJqBKyQ?e=mnaMG2
+              target="_blank">Student data file</a> | -->
+                <a href="https://vvitguntur-my.sharepoint.com/:x:/g/personal/ainuggets_vvit_net/EbuZdNKE-T5LvSa3-9Y7NGQBehdWZbC5zc16Jf-88vcntg?e=ggXVlF"
+                    target="_blank">Output file</a>
+            </p>
+        </center>
+    </div>
+
+
+    <form method=post enctype=multipart/form-data action='/vvit'>
+
+
+        <div class='choose'>
+            <div class='ch1'>
+                <label for="year">Choose year:</label>
+                <select name="year" id="year">
+                    <option value="select_Y">select year</option>
+                    <option value="II">1st year</option>
+                    <option value="II">2nd year</option>
+                    <option value="III">3rd year</option>
+                    <option value="IV">4th year</option>
+                </select>
+            </div>
+            <div class='ch2'>
+                <label for="branch">Choose branch:</label>
+                <select name="branch" id="branch">
+                    <option value="select_b">select branch</option>
+                    <option value="ECE">ECE</option>
+                    <option value="CSE">CSE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="EEE">EEE</option>
+                    <option value="IT">IT</option>
+                    <option value="CIVIL">CIVIL</option>
+                </select>
+            </div>
+            <div class='ch3'>
+                <label for="subject">subject:</label>
+                <input type=text id="subject" name="subject">
+            </div>
+            <div class='ch4'>
+                <label for='filter'> Include attendee if he/she present<br></label>
+                <select name='filter' id='filter'>
+                    <option value="0">more than 0.1% of class duration</option>
+                    <option value="25">more than 25% of class duration</option>
+                    <option value="50">more than 50% of class duration</option>
+                    <option value="75">more than 75% of class duration</option>
+                    <!-- <option value="100">Greater than 0% of class duration</option> -->
+
+                </select>
+            </div>
+        </div>
+
+
+        <center>
+            <div class="filescsv">
+                <div id='leftbox'>
+                    <p>Choose the csv file of Atttendance</p>
+                    <input type=file name=file>
+                </div>
+                <div class='sub'><input type="submit" ,value='submit'></div>
+            </div>
+        </center>
+
+        <!-- <input type="submit" name="submit" value='submit'> -->
+    </form>
+
+    <center>
+        <div class='errors'>
+            <div class='errmesg'>
+                <p><b>{{ err_m }}</b><br></p>
+            </div>
+            <b>{{error}}<br></b>
+        </div>
+    </center>
+
+
+    <footer>
+        <p>Developed by Rakesh Koyya | Final Year ECE |<br>
+            <a href="https://vvitguntur.com" target="_blank">Vasireddy Venkatadri Institute of Technology</a>
+            | <a href="mailto:rakeshkoyya2024@gmail.com">rakeshkoyya2024@gmail.com</a>
+        </p>
+    </footer>
+</body>
+
+</html>
